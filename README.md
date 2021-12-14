@@ -20,3 +20,13 @@ sudo nano compile_script
 ```
 
 "compile_script" can be replaced by whatever name you want.
+
+Whithin this script you need to have the following tags.
+```bash
+avr-gcc -g -Os -mmcu=atmega32 -c led.c
+avr-gcc -g -mmcu=atmega32 -o led.elf led.o
+avr-objcopy -j .text -j .data -O ihex led.elf led.hex
+avr-size --format=avr --mcu=atmega32 led.elf 
+```
+
+Make sure to have the appropriate file tags and avr board labeled.
