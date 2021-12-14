@@ -30,3 +30,15 @@ avr-size --format=avr --mcu=atmega32 led.elf
 ```
 
 Make sure to have the appropriate file tags and avr board labeled.
+
+You then can give the script the required permissions with the commandline.
+```bash
+sudo chmod 755 compile_script
+```
+
+Once again replacing compile_script with whatever you named the file.
+
+Finally the code can be compiled with:
+```bash
+sudo ./compile_script
+```
