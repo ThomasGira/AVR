@@ -1,0 +1,1 @@
+avrdude -c arduino -p m32 -P /dev/tty/USB0 -b 19200 -U flash:w:led.hex
