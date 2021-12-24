@@ -62,8 +62,8 @@ There are a lot of other tags you can include but the easiest way to find them i
 * -b : Sets the baudrate of the RS-232 connection (Kinda confused on why it is this number but it works)
 * -D : Disables autoerase
 * -U : Performs a memory operation, in this case flashing the rom
-..* flash : Flashes the ROM
-..* i : Signifies that Intel Hex is used
+  * flash : Flashes the ROM
+  * i : Signifies that Intel Hex is used
 
 Another potential issue is that the correct permissiond are not given to the port that is writing data. This can be fixed by the following command line arguments.
 
