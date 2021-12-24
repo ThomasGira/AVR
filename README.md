@@ -55,15 +55,15 @@ This file will have the following content.
 avrdude -v -p atmega2560 -c wiring -P /dev/ttyACM0 -b115200 -D -Uflash:w:led.hex:i
 ```
 There are a lot of other tags you can include but the easiest way to find them is to upload an arduino script including "verbose" output and then copying the tags that are used. Heres a quick overview of what is included.
-*-v : Includes verbose output (Gives more information upon compiling)
-*-p : Signifies which microcontroller is being used
-*-c : Signifies which programmer is being used
-*-P : Signifies which port is being used
-*-b : Sets the baudrate of the RS-232 connection (Kinda confused on why it is this number but it works)
-*-D : Disables autoerase
-*-U : Performs a memory operation, in this case flashing the rom
-..*flash : Flashes the ROM
-..*i : Signifies that Intel Hex is used
+* -v : Includes verbose output (Gives more information upon compiling)
+* -p : Signifies which microcontroller is being used
+* -c : Signifies which programmer is being used
+* -P : Signifies which port is being used
+* -b : Sets the baudrate of the RS-232 connection (Kinda confused on why it is this number but it works)
+* -D : Disables autoerase
+* -U : Performs a memory operation, in this case flashing the rom
+..* flash : Flashes the ROM
+..* i : Signifies that Intel Hex is used
 
 Another potential issue is that the correct permissiond are not given to the port that is writing data. This can be fixed by the following command line arguments.
 
