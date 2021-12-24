@@ -7,7 +7,8 @@ Note I Havent Actually tested this so it might not work
 1. binutils : for getting tools like assembler, linker
 2. gcc-avr : a GNU C cross-compiler specifically for AVR
 3. avr-libc : it is a package for AVR C library
-4. avrdude : it is a utility that trasnfers codes from the UBUNTU to the microcontroller. Here we weill be using the CLI tool of avrdude.
+4. avrdude : it is a utility that trasnfers codes from the UBUNTU to the microcontroller. Here we we'll be using the CLI tool of avrdude.
+5. gdb-avr : Utility for in-system debugging and emulation
 5. uisp, flex, bison and byacc : Not sure
 
 ### How to code
@@ -44,3 +45,29 @@ sudo ./compile_script
 ```
 
 ### Programming Controller
+This follows similar suit to the compile script but basically you need to make a file with all the correct compiler tags using the command line.
+```bash
+sudo nano upload_script
+```
+
+This file will have the following content.
+```bash
+avrdude -v -p atmega2560 -c wiring -P /dev/ttyACM0 -b115200 -D -Uflash:w:led.hex:i
+```
+There are a lot of other tags you can include but the easiest way to find them is to upload an arduino script including "verbose" output and then copying the tags that are used. Heres a quick overview of what is included.
+*-v : Includes verbose output (Gives more information upon compiling)
+*-p : Signifies which microcontroller is being used
+*-c : Signifies which programmer is being used
+*-P : Signifies which port is being used
+*-b : Sets the baudrate of the RS-232 connection (Kinda confused on why it is this number but it works)
+*-D : Disables autoerase
+*-U : Performs a memory operation, in this case flashing the rom
+..*flash : Flashes the ROM
+..*i : Signifies that Intel Hex is used
+
+Another potential issue is that the correct permissiond are not given to the port that is writing data. This can be fixed by the following command line arguments.
+
+```bash 
+sudo chmod a+rw /dev/ttyACM0
+sudo chmod +x upload_script
+```
